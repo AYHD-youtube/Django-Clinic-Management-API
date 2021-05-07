@@ -45,3 +45,4 @@ class Availability(models.Model):
     end_time = models.TimeField()
     created_at = models.DateTimeField(auto_now=False, default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
+    
