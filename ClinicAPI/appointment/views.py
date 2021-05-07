@@ -1,16 +1,17 @@
 from rest_framework.permissions import AllowAny
 from .lib.lower_strip import strip_and_lower
 from .lib.convert_to_time import convert
-from rest_framework.views import APIView
+from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Doctor, Patient, Availability, Appointment
-from .serializers import AvailabilitySerializer, AppointmentSerializer, UserSerializer
+from .serializers import AvailabilitySerializer, AppointmentSerializer, UserSerializer ,DoctorSerializer
 
 
 # Login View
-class Login(APIView):
+class Login(generics.GenericAPIView ):
     permission_classes = [AllowAny]
+    serializer_class = DoctorSerializer
 
     def post(self, request):
         try:
@@ -59,8 +60,9 @@ class Login(APIView):
 
 
 # Set Calender Availability View
-class Calender(APIView):
+class Calender(generics.GenericAPIView ):
     permission_classes = [AllowAny]
+    serializer_class = AvailabilitySerializer
 
     def post(self, request):
         email = strip_and_lower(request.data.get('email', ''))
@@ -95,8 +97,9 @@ class Calender(APIView):
                 status=status.HTTP_400_BAD_REQUEST)
 
 
-class BookAppointment(APIView):
+class BookAppointment(generics.GenericAPIView ):
     permission_classes = [AllowAny]
+    serializer_class = AppointmentSerializer
 
     def post(self, request):
 
@@ -194,7 +197,7 @@ class BookAppointment(APIView):
                 status=status.HTTP_400_BAD_REQUEST)
 
 #Register Class
-class Register (APIView):
+class Register (generics.GenericAPIView):
     permission_classes = [AllowAny]
     serializer_class = UserSerializer
 
