@@ -10,7 +10,9 @@
 - Using `api/calender` endpoint to set available days and time as a doctor.
 - Using `api/book-appointment` endpoint as a Patient to book an appointment with a specific doctor.
 
-
+### How to use and Test this application hosted on Heroku
+- Using ` ` endpoint to see swagger documentation.
+- Using `/redoc`endpoint you can se redoc swagger documentation.
 
 
 ### Comments
