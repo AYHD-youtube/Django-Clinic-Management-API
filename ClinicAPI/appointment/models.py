@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 
 import uuid
+
+
 # Create your models here.
 class Doctor(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -11,6 +13,7 @@ class Doctor(models.Model):
     phone_number = models.CharField(max_length=100, null=False)
     password = models.CharField(max_length=255)
     department = models.CharField(max_length=100, null=False)
+    profile_picture = models.URLField(max_length=200,default="https://i.pinimg.com/474x/9b/47/a0/9b47a023caf29f113237d61170f34ad9.jpg")
     created_at = models.DateTimeField(auto_now=False, default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -22,6 +25,7 @@ class Patient(models.Model):
     email = models.CharField(max_length=100, null=False)
     phone_number = models.CharField(max_length=100, null=False)
     password = models.CharField(max_length=255)
+    Address = models.CharField(max_length=255,)
     created_at = models.DateTimeField(auto_now=False, default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -45,4 +49,3 @@ class Availability(models.Model):
     end_time = models.TimeField()
     created_at = models.DateTimeField(auto_now=False, default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
-    

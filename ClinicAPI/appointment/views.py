@@ -1,12 +1,11 @@
-from django.shortcuts import render
 from rest_framework.permissions import AllowAny
 from .lib.lower_strip import strip_and_lower
 from .lib.convert_to_time import convert
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import *
-from .serializers import *
+from .models import Doctor, Patient, Availability, Appointment
+from .serializers import AvailabilitySerializer, AppointmentSerializer, UserSerializer
 
 
 # Login View
@@ -57,6 +56,8 @@ class Login(APIView):
             return Response(
                 dict(invalid_credential='This Email does not exist in our records'),
                 status=status.HTTP_400_BAD_REQUEST)
+
+
 # Set Calender Availability View
 class Calender(APIView):
     permission_classes = [AllowAny]
@@ -191,3 +192,16 @@ class BookAppointment(APIView):
             return Response(
                 dict(invalid_credential='Sorry, You are not a Registered Patient.'),
                 status=status.HTTP_400_BAD_REQUEST)
+
+#Register Class
+class Register (APIView):
+    permission_classes = [AllowAny]
+    serializer_class = UserSerializer
+
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
