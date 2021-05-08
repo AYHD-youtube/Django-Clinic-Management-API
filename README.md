@@ -18,3 +18,56 @@
 
 ### Comments
 send an email to abhishek3yadav3@gmail.com if there are any questions.
+
+
+###Documentation
+#### Using POSTMAN [POST] all the above endpoints to run the API
+POST Login
+BODY 
+{
+    "email": "markessien@gmail.com",
+    "password": "patientonereal"
+}
+
+POST Set Calender Availability
+BODY 
+{
+    "email": "mudia@gmail.com",
+    "day": "wednesday",
+    "open": "12:00",
+    "closed": "16:00"
+}
+
+POST Book Appointment
+BODY 
+{
+    "email": "yinka@gmail.com",
+    "doctor_email": "mudia@gmail.com",
+    "day": "wednesday",
+    "start_time": "15:00",
+    "stop_time": "18:00"
+}
+
+POST Register
+BODY
+{
+    first_name: 
+        "Abhishek"
+    ,
+    "last_name":
+        "Yadav"
+    ,
+    "email":
+        "abhishek3ayadav3@gmail.com"
+    ,
+    "phone_number": 
+        "970285226"
+    ,
+    "password": 
+        "abhishek"
+    ,
+    "Address": 
+        "Bhandup,Mumbai"    
+}
+
+
