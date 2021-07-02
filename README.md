@@ -4,7 +4,7 @@
 - run migrations `python manage.py makemigrations`
 - run migrate `python manage.py migrate`
 - run `python manage.py createsuperuser` to create superuser
-- run tests `python manage.py test`
+- run the app `python manage.py runserver`
 - Using `api/register`endpoint POST request you can add a patient.
 - Using `api/admin`endpoint you can access all doctors and patients and create new doctors.
 - Using `api/calender` endpoint to set available days and time as a doctor.
